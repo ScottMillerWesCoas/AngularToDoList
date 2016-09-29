@@ -1,0 +1,67 @@
+
+<!-- COMMENTED OUT CODE IS FROM JQUERY EXAMPLE OF DATA BINDING -->
+<!-- <!DOCTYPE html> -->
+<html ng-app="nameApp">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,900' rel='stylesheet' type='text/css'>
+
+    <script>
+      var nameApp = angular.module('nameApp', []); 
+      nameApp.controller('NameCtrl',  function($scope){
+        $scope.fName = ''; 
+        $scope.$watch('lName', function (newVal, oldVal){
+          setTimeout(function(){
+            $('#testing').text("Thanks for Coming!").animate({opacity: '1', marginLeft: '50%'}, 2000); 
+          }, 2000); 
+        }); 
+      }); 
+      nameApp.controller('ScottCtrl',  function($scope){
+        $scope.nameList = ['Play with Dash', 'Romance McKenna', 'Coding']; 
+        // $scope.$watch('enterName', function (newVal, oldVal){
+        //   $scope.nameList.push(newVal); 
+        $scope.enteredName = function(){
+          $scope.nameList.push($scope.enterName); 
+          $scope.enterName = ''; 
+        };
+        $scope.removeName = function(item){
+          var thisOne = $scope.nameList.indexOf(item); 
+          $scope.nameList.splice(thisOne, 1); 
+        };  
+       
+      }); 
+    </script>
+  </head>
+
+  <body>
+    <div ng-controller='NameCtrl' style='border-radius: 15px; width: 75%; opacity: .9'>
+      <div id="game-box" style="background-color: #334455; font-family:'Oswald'; font-size: 20px; padding-left: 30px; width: 90%; padding-bottom: 2%">
+        Name:  
+        <input ng-model="fName" type="text"/>
+        <input ng-model="lName" type="text"/>
+      </div>
+      <div id='todo' style="background-color: #5AE388; margin-top: 10%; font-family:'Oswald'; font-size: 40px; padding-left: 30px; width: 90%">
+       {{fName}} {{lName}}'s TO-DO LIST: 
+       </div>
+    </div>
+    
+    <div id='testing' style="font-family:'Oswald'; font-weight: 900; font-size: 30px; padding-left: 50px; width: 90%; color: #564AE2; opacity: 0; height: 5%"></div>
+     
+     <div ng-controller='ScottCtrl'>
+      <ul >
+        <li ng-repeat="el in nameList"> {{ el }} 
+            <button ng-click="removeName(el)">remove item</button>
+        </li>
+      </ul>
+      <form ng-submit='enteredName()'>
+        <input ng-model="enterName" type="text"/>
+        <button>add item</button>
+      </form>
+    </div>
+   
+
+  </body>
+
+</html>
