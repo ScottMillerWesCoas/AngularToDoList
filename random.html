@@ -1,4 +1,3 @@
-
 <!-- COMMENTED OUT CODE IS FROM JQUERY EXAMPLE OF DATA BINDING -->
 <!-- <!DOCTYPE html> -->
 <html ng-app="nameApp">
@@ -19,11 +18,15 @@
         }); 
       }); 
       nameApp.controller('ScottCtrl',  function($scope){
-        $scope.nameList = ['Play with Dash', 'Romance McKenna', 'Coding']; 
+        $scope.nameList = [
+          {'Item': 'Play with Dash', 'Frequency': 'Daily'}, 
+          {'Item': 'Romance McKenna', 'Frequency': 'Daily'}, 
+          {'Item': 'Take out the trash', 'Frequency': 'Bi-Weekly'}
+        ]; 
         // $scope.$watch('enterName', function (newVal, oldVal){
         //   $scope.nameList.push(newVal); 
         $scope.enteredName = function(){
-          $scope.nameList.push($scope.enterName); 
+          $scope.nameList.push({'Item': $scope.enterName}); 
           $scope.enterName = ''; 
         };
         $scope.removeName = function(item){
@@ -51,8 +54,8 @@
      
      <div ng-controller='ScottCtrl'>
       <ul >
-        <li ng-repeat="el in nameList"> {{ el }} 
-            <button ng-click="removeName(el)">remove item</button>
+        <li ng-repeat="el in nameList" style='width: 500px'> <span style='width: 150px'>{{ el.Item }}:</span><span style='width: 5%; margin-left: 3%'>{{ el.Frequency }}</span> 
+            <button style='margin-left: 3%' ng-click="removeName(el)">remove item</button>
         </li>
       </ul>
       <form ng-submit='enteredName()'>
