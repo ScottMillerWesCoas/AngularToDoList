@@ -1,4 +1,4 @@
-    [{"id": 1, "Item": "Play with Dash", "Frequency": "Daily"}, 
-      {"id": 2, "Item": "Romance McKenna", "Frequency": "Daily"}, 
-      {"id": 3, "Item": "Take out the trash", "Frequency": "Bi-Weekly"},
-      {"id": 4, "Item": "This worked", "Frequency": "oh boy"}]; 
+    [{"Importance": 2, "Item": "Play with Dash", "Frequency": "Daily"}, 
+      {"Importance": 1, "Item": "Romance McKenna", "Frequency": "Daily"}, 
+      {"Importance": 3, "Item": "Take out the trash", "Frequency": "Bi-Weekly"},
+      {"Importance": 0, "Item": "This worked", "Frequency": "oh boy"}]; 

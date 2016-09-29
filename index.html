@@ -27,15 +27,17 @@
         http.get('toDoListData.json').success(function(data){
           scope.nameList = data;
           scope.newList = eval(scope.nameList); 
+          console.log(scope.newList); 
         }); 
         scope.removeItem = function(item){
           var i = scope.newList.indexOf(item); 
           scope.newList.splice(i, 1); 
         };
-        scope.addItem = function(){
-          scope.newList.push({"Item": scope.enterName, "Frequency": scope.howOften}); 
+        scope.addItem = function(){ 
+          scope.newList.push({"Importance": scope.howImportant, "Item": scope.enterName, "Frequency": scope.howOften}); 
           scope.enterName = ''; 
           scope.howOften = ''; 
+          scope.howImportant = ''; 
         };  
       }]); 
     </script>
@@ -61,9 +63,10 @@
           <th style='text-align: left'><big>Item</big></th><th><big>Frequency</big></th>
          
         </tr>
-        <tr ng-repeat="el in newList | filter:query">
+        <tr ng-repeat="el in newList | filter:query | orderBy:'Importance' ">
           <td id='{{el.item}}'>{{el.Item}}</td>
           <td >{{ el.Frequency }}</td>
+          <td >{{ el.Importance }}</td>
           <td width="20%"> <button ng-click="removeItem(el)">remove item</button></td>
         </tr>
       </table>
@@ -76,6 +79,7 @@
       <form ng-submit='addItem()'>
         <input ng-model="enterName" type="text" placeholder="New Item" />
          <input ng-model="howOften" type="text" placeholder="Frequency" />
+         <input ng-model="howImportant" type="text" placeholder="Importance" />
         <button>add new item</button>
       </form>
         <input ng-model="query" type="text" placeholder="Search the To-Do List" />
