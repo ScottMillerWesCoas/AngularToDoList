@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-animate.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,900' rel='stylesheet' type='text/css'>
+    <link href="animations.css" rel="stylesheet" type="text/css">
+   
 
     <script>
-      var nameApp = angular.module('nameApp', []); 
+      var nameApp = angular.module('nameApp', ['ngAnimate']); 
       nameApp.controller('NameCtrl',  function($scope){
         $scope.fName = 'Scott'; 
         $scope.lName = 'Miller'; 
@@ -84,7 +87,7 @@
           <th style='text-align: left'><a href='' ng-click="sortField = 'Frequency'; reverse = !reverse"><big>Frequency</big></a></th>
           <th style='text-align: left'><a href='' ng-click="sortField = 'order'; reverse = !reverse"><big>Importance</big></a></th>
         </tr>
-        <tr ng-repeat="el in newList | filter:query | orderBy:sortField:reverse track by el.key">
+        <tr class="animate-repeat" ng-repeat="el in newList | filter:query | orderBy:sortField:reverse track by el.key">
           <td width="20%">{{el.Item}}</td>
           <td width="20%">{{ el.Frequency }}</td>
           <td width="20%">{{ el.order }}</td>
