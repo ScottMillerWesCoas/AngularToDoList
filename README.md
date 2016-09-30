@@ -1,2 +1,2 @@
-# AngularToDoList
-A to-do list in Angular with add/remove functionality, user name input/display
+# AngularWork
+- [ ] Working with retreiving, manipulating, displaying and animating data in Angular 
