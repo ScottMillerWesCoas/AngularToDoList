@@ -24,28 +24,41 @@
     //   {"Item": "Romance McKenna", "Frequency": "Daily"}, 
     //   {"Item": "Take out the trash", "Frequency": "Bi-Weekly"}
     // ]; 
-        scope.sortField = 'order';
-        scope.reverse = false;  
-        http.get('toDoListData.json').success(function(data){
-          scope.nameList = data;
-          scope.newList = eval(scope.nameList); 
-          console.log('got it', scope.newList); 
-          scope.newList = []; 
-        }); 
+
+        scope.sortField = 'key';
+        scope.reverse = true;  
+        // http.get('toDoListData.json').success(function(data){
+        //   scope.nameList = data;
+        //   scope.newList = eval(scope.nameList); 
+        //   console.log('got it', scope.newList); 
+        //    scope.newList = []; 
+        // }); 
+        var savedData = localStorage.getItem('toDoList'); 
+        if (savedData){
+          console.log('got localStorage!'); 
+          scope.localStorage = JSON.parse(savedData); 
+          scope.newList = eval(scope.localStorage); 
+          console.log('from localStorage', scope.newList); 
+      }
 
         scope.removeItem = function(item){
           var i = scope.newList.indexOf(item); 
           scope.newList.splice(i, 1); 
         };
         scope.addItem = function(){ 
-          scope.newList.push({"order": scope.howImportant, "Item": scope.enterName, "Frequency": scope.howOften}); 
+          scope.newList.push({"key": scope.newList.length, "order": scope.howImportant, "Item": scope.enterName, "Frequency": scope.howOften, "imgUrl": scope.imgUrl}); 
+          console.log('item added to scope', scope.newList[scope.newList.length-1]); 
           scope.enterName = ''; 
           scope.howOften = ''; 
           scope.howImportant = ''; 
-          console.log(scope.newList); 
+          scope.imgUrl = ''; 
+        }; 
+        scope.saveList = function(){
+          localStorage.setItem('toDoList', JSON.stringify(scope.newList));  
         };  
       }]); 
     </script>
+  
   </head>
 
   <body>
@@ -63,17 +76,20 @@
     <div id='testing' style="font-family:'Oswald'; font-weight: 900; font-size: 30px; padding-left: 50px; width: 90%; color: #564AE2; opacity: 0; height: 5%"></div>
      
      <div ng-controller='ScottCtrl'>
+     <input ng-model="query" type="text" placeholder="Search the To-Do List" />
+
       <table style="font-family:'Oswald'"" width='75%'">
         <tr>
           <th style='text-align: left'><a href='' ng-click="sortField = 'Item'; reverse = !reverse"><big>Item</big></a></th>
           <th style='text-align: left'><a href='' ng-click="sortField = 'Frequency'; reverse = !reverse"><big>Frequency</big></a></th>
           <th style='text-align: left'><a href='' ng-click="sortField = 'order'; reverse = !reverse"><big>Importance</big></a></th>
         </tr>
-        <tr ng-repeat="el in newList | filter:query | orderBy:sortField:reverse">
-          <td width="25%">{{el.Item}}</td>
-          <td width="25%">{{ el.Frequency }}</td>
-          <td width="25%">{{ el.order }}</td>
-          <td width="25%"> <button ng-click="removeItem(el)">remove item</button></td>
+        <tr ng-repeat="el in newList | filter:query | orderBy:sortField:reverse track by el.key">
+          <td width="20%">{{el.Item}}</td>
+          <td width="20%">{{ el.Frequency }}</td>
+          <td width="20%">{{ el.order }}</td>
+          <td width="20%"><img ng-src='{{ el.imgUrl }}' width='150'/></td>
+          <td width="20%"> <button ng-click="removeItem(el)">remove item</button></td>
         </tr>
       </table>
      <!-- LIST INSTEAD OF TABLE, TABLE BETTER FOR APPEARANCE
@@ -86,9 +102,12 @@
         <input ng-model="enterName" type="text" placeholder="New Item" />
          <input ng-model="howOften" type="text" placeholder="Frequency" />
          <input ng-model="howImportant" type="text" placeholder="Importance" />
+         <input ng-model="imgUrl" type="text" placeholder="imgUrl" />
         <button>add new item</button>
       </form>
-        <input ng-model="query" type="text" placeholder="Search the To-Do List" />
+        
+        <br>
+        <button ng-click='saveList()'>save To-Do list</button>
     </div>
    
 
