@@ -1,9 +1,4 @@
-.animate-repeat {
-  line-height:30px;
-  list-style:none;
-  box-sizing:border-box;
-}
-
+/*
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter,
 .animate-repeat.ng-leave {
@@ -23,3 +18,91 @@
   opacity:1;
   max-height:30px;
 }
+
+#toDoList td.ng-enter{
+  transition: 1.5s linear all;
+  opacity:0;
+}
+
+#toDoList td.ng-enter.ng-enter-active{
+ opacity:1;
+}
+
+#toDoList td.ng-leave{
+  transition: 1.5s linear all;
+  opacity:0;
+}
+
+#toDoList td.ng-leave.ng-leave-active{
+ opacity:1;
+}*/
+
+/* The starting CSS styles for the enter animation 
+/*.ng-enter {
+  transition: 1.5s linear all;
+  opacity:0;
+}*/
+
+/* The finishing CSS styles for the enter animation */
+/*.ng-enter.ng-enter-active {
+  opacity:1;
+}*/
+
+/*table, td {
+   border: 1px solid black;
+ 
+}*/
+
+/*.ng-enter{
+   transition: .25s linear all;
+  opacity:0;
+  transform: translateY(30px);
+}
+.ng-enter-active{
+  opacity:1;
+   transform: translateY(0);
+}
+.ng-leave{
+   transition: .25s linear all;
+  opacity:1;
+
+}
+.ng-leave-active{
+  opacity:0;
+}
+
+.ng-move{
+  transition: .5s linear all;
+  opacity:0;
+  max-height:0;
+}
+.ng-move-active{
+  opacity:1;
+  max-height:30px;
+}*/
+
+.ng-move,
+.ng-enter,
+.ng-leave {
+  transition:all linear 0.5s;
+}
+
+.ng-leave.ng-leave-active,
+.ng-move,
+.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.ng-leave,
+.ng-move.ng-move-active,
+.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:30px;
+}
+
+
+
+
+
+
