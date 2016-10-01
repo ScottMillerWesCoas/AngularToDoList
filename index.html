@@ -7,24 +7,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js"></script>
 <!--     <script type="text/javascript" src="/lib/angular-animate.min.js"></script> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,900' rel='stylesheet' type='text/css'>
     <link href="animations.css" rel="stylesheet" type="text/css">
    
 
     <script>
-      var nameApp = angular.module('nameApp', ['ngAnimate']); 
-      nameApp.controller('NameCtrl',  function($scope){
-        $scope.fName = 'Scott'; 
-        $scope.lName = 'Miller'; 
-        $scope.$watch('lName', function (newVal, oldVal){
+      var nameApp = angular.module('nameApp', ['ngRoute', 'ngAnimate']);
+      nameApp.config(configFunction);
+      function configFunction($routeProvider) {
+        console.log('in configFunction'); 
+        $routeProvider
+        .when('/test', {
+          templateUrl:'test.htm',
+          //templateUrl: './index.html',
+          // controller: 'NameCtrl'
+        }) 
+        .when('/toDoList', {
+          templateUrl:'toDoList.htm',
+          controller: "NameCtrl"
+        })
+         .when('/', {
+          templateUrl:'welcome.htm',
+          //controller: "NameCtrl"
+        })
+        .when('/welcome', {
+          templateUrl:'welcome.htm',
+          //controller: "NameCtrl"
+        });       
+      }     
+      nameApp.controller('NameCtrl', ['$scope', '$http', function(scope, http){
+        scope.fName = 'Scott'; 
+        scope.lName = 'Miller'; 
+        scope.$watch('lName', function (newVal, oldVal){
           setTimeout(function(){
             $('#testing').text("Thanks for Coming!").animate({opacity: '1', marginLeft: '50%'}, 2000); 
           }, 2000); 
         }); 
-      }); 
-      nameApp.controller('ScottCtrl', ['$scope', '$http', function(scope, http){
-    //         scope.nameList =     [
+    //  scope.nameList =     [
     //   {"Item": "Play with Dash", "Frequency": "Daily"}, 
     //   {"Item": "Romance McKenna", "Frequency": "Daily"}, 
     //   {"Item": "Take out the trash", "Frequency": "Bi-Weekly"}
@@ -70,57 +91,10 @@
   </head>
 
   <body>
-    <div ng-controller='NameCtrl' style='border-radius: 15px; width: 75%; opacity: .9'>
-      <div id="game-box" style="background-color: #334455; font-family:'Oswald'; font-size: 20px; padding-left: 30px; width: 90%; padding-bottom: 2%">
-        Name:  
-        <input ng-model="fName" type="text"/>
-        <input ng-model="lName" type="text"/>
-      </div>
-      <div id='todo' style="background-color: #5AE388; margin-top: 10%; font-family:'Oswald'; font-size: 40px; padding-left: 30px; width: 90%">
-       {{fName}} {{lName}}'s TO-DO LIST: 
-       </div>
-    </div>
-    
-    <div id='testing' style="font-family:'Oswald'; font-weight: 900; font-size: 30px; padding-left: 50px; width: 90%; color: #564AE2; opacity: 0; height: 5%"></div>
-     
-     <div ng-controller='ScottCtrl'>
-     <input ng-model="query.Item" type="text" placeholder="Search by Item" />
-     <input ng-model="query.order" type="text" placeholder="Search by Importance" />
-
-      <table id='toDoList' style="font-family:'Oswald'" width='75%'>
-        <tr>
-          <th style='text-align: left'><a href='' ng-click="sortField = 'Item'; reverse = !reverse"><big>Item</big></a></th>
-          <th style='text-align: left'><a href='' ng-click="sortField = 'Frequency'; reverse = !reverse"><big>Frequency</big></a></th>
-          <th style='text-align: left'><a href='' ng-click="sortField = 'order'; reverse = !reverse"><big>Importance</big></a></th>
-        </tr>
-        <tr ng-repeat="el in newList | filter:query | orderBy:sortField:reverse track by el.key" >
-          <td ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" width="20%">{{el.Item}}</td>
-          <td ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" width="20%">{{ el.Frequency }}</td>
-          <td ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" width="20%">{{ el.order }}</td>
-          <td ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" width="20%"><img ng-src='{{ el.imgUrl }}' width='150'/></td>
-          <td ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" width="20%"> <button ng-click="removeItem(el)">remove item</button></td>
-        </tr>
-      </table>
-     <!-- LIST INSTEAD OF TABLE, TABLE BETTER FOR APPEARANCE
-      <ul>
-        <li ng-repeat="el in nameList" style='width: 500px'> <span style='width: 150px'>{{ el.Item }}:</span><span style='width: 5%; margin-left: 3%'>{{ el.Frequency }}</span> 
-            <button style='margin-left: 3%' ng-click="removeName(el)">remove item</button>
-        </li>
-      </ul> -->
-      <form ng-submit='addItem()'>
-        <input ng-model="enterName" type="text" placeholder="New Item" />
-         <input ng-model="howOften" type="text" placeholder="Frequency" />
-         <input ng-model="howImportant" type="text" placeholder="Importance" />
-         <input ng-model="imgUrl" type="text" placeholder="imgUrl" />
-        <button>add new item</button>
-      </form>
-        
-        <br>
-        <button ng-click='saveList()'>save To-Do list</button>
-        <button ng-click='deleteList()'>delete To-Do list</button>
+    <p  style="font-family:'Oswald'"><a href="#test">Test out routing</a> | <a href="#toDoList">Go to To-Do List!</a> | <a href="#welcome">Welcome Page</a></p>
+     <div ng-view>
     </div>
    
-
   </body>
 
 </html>
