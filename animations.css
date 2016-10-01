@@ -3,7 +3,7 @@
 .ng-move,
 .ng-enter,
 .ng-leave {
-  transition:all linear 0.5s;
+  transition:all linear 1s;
 }
 
 .ng-leave.ng-leave-active,
@@ -19,7 +19,6 @@
   opacity:1;
   max-height:10px;
 }
-
 
 
 
