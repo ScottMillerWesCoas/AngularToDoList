@@ -13,19 +13,22 @@
   <div ng-controller='NameCtrl' style='border-radius: 15px; width: 75%; opacity: .9'>
   <div id='containerG'></div>
     <div id='resume'>
-     <p><a href="#resume">Resume</a> | <a href="#toDoList">Go to To-Do List!</a> | <a href="#welcome">Welcome Page</a></p>
+     <p  style="font-family:'Oswald' margin-bottom: -20%"><a href="#resume">Resume</a> | <a href="#toDoList">Go to To-Do List!</a> | <a href="#welcome">Welcome Page</a></p>
       <h1 class='res'>Resume</h1>
       
-      <ul ng-repeat="el in resume">
+      <ul ng-repeat="el in resume" style="width: 90%">
         <big><b><i>{{el.categoryName}}</i></b></big>
         <br>
         <b><i>{{el.categoryTag}}</i></b>
-        <li>{{el.categoryDescriptionA}}</li>
-        <li>{{el.categoryDescription0}}</li>
-        <li>{{el.categoryDescription1}}</li>
-        <li>{{el.categoryDescription2}}</li>
-        <li>{{el.categoryDescription3}}</li>
-        <li>{{el.categoryDescription4}}</li>
+        <br>
+        <div class='glowing-circle'></div> <span class='iLeft'>{{el.categoryDescriptionA}}</span>
+        <br>
+        <div class='glowing-circle'></div> <span class='iLeft'>{{el.categoryDescription0}}</span>
+        <li class='iLeft'>{{el.categoryDescription0}}</li>
+        <li class='iLeft'>{{el.categoryDescription1}}</li>
+        <li ng-if="el.categoryDescription2.length > 0" class='iLeft'>{{el.categoryDescription2}}</li>
+        <li ng-if="el.categoryDescription3.length > 0" class='iLeft'>{{el.categoryDescription3}}</li>
+        <li ng-if="el.categoryDescription4.length > 0" class='iLeft'>{{el.categoryDescription4}}</li>
       </ul>
     <div>
 
