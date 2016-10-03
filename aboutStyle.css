@@ -1,0 +1,73 @@
+body {
+  font-family: 'Oswald', sans-serif;
+  overflow: hidden;
+  background-image:url('starfield2.jpg');
+}
+
+
+div.wrap {
+    height:100%; 
+    overflow:hidden;
+}
+
+.res {
+    margin-top: -1%;
+    margin-left: 1.5%;  
+    color: #FAFAFA;
+}
+p {
+    color: #FAFAFA; 
+}
+
+ul{
+    color: #FAFAFA;
+    z-index: 1; 
+    color: #FAFAFA;
+    width: 100%;
+}
+
+#containerG{
+    position: absolute; 
+    z-index: 1; 
+    top: 20%;
+    left: 30%;
+}
+
+@-webkit-keyframes pulse {
+  0% { box-shadow:0 0 8px #C0C0C0, inset 0 0 8px #FFF; }
+  50% { box-shadow:0 0 14px #C0C0C0, inset 0 0 12px #FFF; }
+  100% { box-shadow:0 0 8px #C0C0C0, inset 0 0 8px #FFF; }
+}
+
+.glowing-circle {
+    margin-left: 5%;
+  display: inline-block;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  box-shadow: 0 0 8px #FFF, inset 0 0 8px #FFF;
+  -webkit-animation: pulse 2s linear 1s infinite;
+}
+
+.iLeft{
+    margin-left: 1%; 
+    font-family: "Open Sans", sans-serif; 
+}
+
+li {
+    font-family: "Open Sans", sans-serif; 
+}
+
+
+#links{
+    position: absolute;
+    z-index: -1; 
+    color: #FAFAFA;
+    top: 5%; 
+    left: 2.25%; 
+    width: 30%; 
+}
+a {
+  color: #FAFAFA;
+  text-decoration: none;  
+}
