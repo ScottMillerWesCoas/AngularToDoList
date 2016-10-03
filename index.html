@@ -60,12 +60,31 @@
         //    scope.newList = []; 
         // }); 
         var savedData = localStorage.getItem('toDoList'); 
+        var userName = localStorage.getItem('toDoListUserName'); 
+
         if (savedData){
           console.log('got localStorage!'); 
           scope.localStorage = JSON.parse(savedData); 
           scope.newList = eval(scope.localStorage); 
           console.log('from localStorage', scope.newList); 
-      }
+        }
+         if (userName){
+          console.log('got userName!', userName); 
+          // scope.localStorageUN = JSON.parse(userName); 
+          // scope.newName = eval(scope.localStorageUN); 
+          scope.noQuotes = userName.replace(/['"]+/g, '');
+          scope.nameArray = scope.noQuotes.split(' '); 
+          scope.fName = scope.nameArray[0]; 
+          scope.lName = scope.nameArray[1]; 
+          console.log('name from localStorage', scope.fName, scope.lName); 
+        }
+         scope.saveName = function(){
+          scope.enteredName = scope.fName + ' ' + scope.lName; 
+          console.log('enteredName', scope.enteredName); 
+          localStorage.setItem('toDoListUserName', JSON.stringify(scope.enteredName));  
+        };
+
+        
 
         scope.removeItem = function(item){
           var i = scope.newList.indexOf(item); 

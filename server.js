@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, './')));
 
 
 app.get('/', function(req, res){
-    res.send('./index.html'); 
+    res.send('./toDoHome.html'); 
 });
 
 
