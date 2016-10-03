@@ -50,7 +50,6 @@ function init() {
 
   scene.add( light );
   scene.add( aLight );
-  
 
 }
 
