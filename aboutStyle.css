@@ -33,6 +33,10 @@ ul{
     left: 30%;
 }
 
+#bullett{
+    margin-top: -.1%; 
+}
+
 @-webkit-keyframes pulse {
   0% { box-shadow:0 0 8px #C0C0C0, inset 0 0 8px #FFF; }
   50% { box-shadow:0 0 14px #C0C0C0, inset 0 0 12px #FFF; }
@@ -40,7 +44,15 @@ ul{
 }
 
 .glowing-circle {
-    margin-left: 5%;
+  margin-left: 3%;
+  display: inline-block;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  box-shadow: 0 0 8px #FFF, inset 0 0 8px #FFF;
+  -webkit-animation: pulse 2s linear 1s infinite;
+}
+.inner-glowing-circle {
   display: inline-block;
   width:15px;
   height:15px;
@@ -51,6 +63,7 @@ ul{
 
 .iLeft{
     margin-left: 1%; 
+    width: 130%;
     font-family: "Open Sans", sans-serif; 
 }
 
