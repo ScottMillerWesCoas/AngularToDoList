@@ -67,6 +67,16 @@ ul{
     font-family: "Open Sans", sans-serif; 
 }
 
+.one{
+    margin-top: -.1%; 
+}
+
+.iLeft-giterate{
+    margin-left: 1%; 
+    width: 60%;
+    font-family: "Open Sans", sans-serif; 
+}
+
 li {
     font-family: "Open Sans", sans-serif; 
 }
