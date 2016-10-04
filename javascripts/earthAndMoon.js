@@ -40,4 +40,4 @@ var aLight = new THREE.AmbientLight( 0x112233 ); // soft white light
 
 
 var light = new THREE.PointLight( 0xF0F0F0, 1);
-light.position.set( -100, 0, 70 );
+light.position.set( -100, 0, 50 );
