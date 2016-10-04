@@ -52,7 +52,7 @@ h1, h2, h3, p{
     color: #FFF;
 }
 .workWith{
-    top: 55%;
+    top: 65%;
     left: 60%;
 }
 
@@ -74,24 +74,22 @@ h3{
     left: 3%; 
     width: 30%; 
 }
-
-p .workWith{
+#ptools {
     color: #FFF;
-    z-index: 1; 
-    color: #FFF;
-    position: absolute;
-    top: 62%; 
-    left: 60%;
-    width: 17%; 
-    text-align: center;
+    top: 72%; 
+    left: 60%; 
+    
 }
 span{
-    margin-left: 2%
+    margin-left: 1%
 }
 li {
     font-family: "Open Sans", sans-serif; 
 }
 
+#tools {
+    color: #FAFAFA;
+}
 
 #exclamation{
     margin-left: 2%
@@ -110,7 +108,7 @@ a {
   text-decoration: none;  
 }
 #first{
-    margin-left: 13%;
+  margin-left: 13%;
   color: #FFF;
   text-decoration: none;  
 }
