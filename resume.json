@@ -15,15 +15,17 @@
       "categoryName": "Giterate",
       "categoryTag": "Automated whiteboarding session with testing and analysis of job candidate coding tendencies",
       "categoryDescriptionA": "Implemented TDD to handle various user input errors and routing issues through Mocha Chai testing",
-      "categoryDescription0": "Maintained persistence of hiring candidate information/updated candidate information with test scores in MongoDB",
-      "categoryDescription1": "Developed algorithmic parallel to AST for checking hiring candidate coding tendencies (time/space complexity, modularization, etc.)"
+      "categoryDescription0": "Maintained persistence of hiring candidate information in MongoDB",
+      "categoryDescription1": "Dynamically updated employer DB with completed algorithmic challenges",
+      "categoryDescription2": "Developed algorithmic parallel to AST for checking hiring candidate coding tendencies/Big-O notation"
     },
     { 
       "key": 2, 
       "categoryName": "Command_Shift",
       "categoryTag": "Automated nursing duties delegator for Ivy Creek Healthcare and Wellness Center, San Gabriel, CA",
-       "categoryDescriptionA": "Implemented robust testing to handle user errors, integrity of database and routes and reveal flaws in legacy code using Mocha Chai and Supertest",
-      "categoryDescription0": "Provided nurses with on-the-go access through the implementation of a React Native mobile application, with an API to link directly to the administrator database"
-      
+       "categoryDescriptionA": "Implemented robust testing to handle user errors, integrity of database using Mocha Chai",
+      "categoryDescription0": "Route testing with Supertest",
+      "categoryDescription1": "Provided nurses with on-the-go access through the implementation of a React Native mobile application", 
+      "categoryDescription2": "Engineered API to sync with emplyer DB"
     }
 ]
