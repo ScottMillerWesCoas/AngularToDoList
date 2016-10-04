@@ -1,12 +1,76 @@
+<!DOCTYPE html>
 <html>
   <head>
-
-  
+    <link rel='stylesheet' href='welcomeStyle.css' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
   </head>
-  
+  <body>
+<div class='wrap' ng-controller='NameCtrl'>
+  <p  style="font-family:'Oswald' margin-bottom: -20%"><a id='first' href="#resume">Resume</a> | <a href="#toDoList">To-Do List</a> | <a href="#welcome">Welcome</a>
+  </p>
+  <div class='workLinks'>
+    <a class='gitHub' href="http://www.linkedin.com/in/Scott-T-Miller" target="_blank">GitHub</a>
+    <br>
+    <a class='linkedIn' href="https://github.com/ScottMillerWesCoas?tab=repositories" target="_blank">LinkedIn</a>
+    <br>
+    Scott.T.Miller1@gmail.com
+  </div>
+  <div class="vimeoFrame"> 
+    <iframe class="vimeoXtra" src="https://player.vimeo.com/video/184383202?hd=1&autoplay=1&loop=1&title=0&byline=0&portrait=0" width='1280' height='720' frameborder="0">
+    </iframe>
+  </div>
+
+
+  <h1 class='workWith'>What I Work With</h1>
+   <p id='ptools' ng-repeat="el in tools" style="width: 120%">
+    <span> {{el.one}} </span>
+    <span> {{el.two}} </span>
+    <span> {{el.three}} </span>
+    <br>
+    <span> {{el.four}} </span>
+    <span> {{el.five}} </span> 
+    <span> {{el.seven}} </span>
+   </p>
+
+  <h3>Thanks for coming<span id='exclamation'>!</span></h3>
+</div>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='aboutStyle.css' />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+         <script type="text/javascript" src="/javascripts/three.min.js"></script>
+   
+  </head>
   <body>
 
-    <h1 style="font-family:'Oswald'"> Thanks for coming to my To-Do List Site!</h1>
+  
+  <div ng-controller='NameCtrl' style='border-radius: 15px; width: 75%; opacity: .9'>
+  <div id='containerG'></div>
+    <div id='resume'>
+     <p  style="font-family:'Oswald' margin-bottom: -20%"><a href="#resume">Resume</a> | <a href="#toDoList">Go to To-Do List!</a> | <a href="#welcome">Welcome Page</a></p>
+      <h1 class='res'>Resume</h1>
+      
+      <ul ng-repeat="el in resume" style="width: 90%">
+        <big><b><i>{{el.categoryName}}</i></b></big>
+        <br>
+        <b><i>{{el.categoryTag}}</i></b>
+        <li class='iLeft'>{{el.categoryDescriptionA}}</li>
+        <li class='iLeft'>{{el.categoryDescription0}}</li>
+        <li class='iLeft'>{{el.categoryDescription1}}</li>
+        <li ng-if="el.categoryDescription2.length > 0" class='iLeft'>{{el.categoryDescription2}}</li>
+        <li ng-if="el.categoryDescription3.length > 0" class='iLeft'>{{el.categoryDescription3}}</li>
+        <li ng-if="el.categoryDescription4.length > 0" class='iLeft'>{{el.categoryDescription4}}</li>
+      </ul>
+    <div>
+
+
+     <script type="text/javascript" src="/javascripts/earthAndMoon.js"></script>
+    <script type="text/javascript" src="/javascripts/galaxyScene.js"></script>
   </body>
 
-</html>
+</html> -->
