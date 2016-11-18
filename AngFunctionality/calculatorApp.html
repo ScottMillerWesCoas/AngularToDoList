@@ -1,0 +1,138 @@
+<html ng-app="OtherMod">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./aStyles.css" /> 
+    <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" /> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+  </head>
+  <body ng-controller='Ctlr1 as c1'>
+    <div class='toDo' ng-controller="CtrlToDo as td">
+      <h1>The Obligatory (Editable) To-Do App</h1>
+    
+ <div id="muteYouTubeVideoPlayer" style="position: fixed; top: 0; left: 0; z-index: -99"></div>
+ 
+    <!-- BG Video through YouTube's API -->
+    <script async src="https://www.youtube.com/iframe_api"></script>
+    <script>
+     function onYouTubeIframeAPIReady() {
+      var player;
+      player = new YT.Player('muteYouTubeVideoPlayer', {
+        videoId: 'O5RdMvgk8b0', // YouTube Video ID
+         width: 1280,          // Player width (in px)
+        height: 700,              // Player height (in px)
+        playerVars: {
+          start: 3312,           //Start video 5 seconds in to avoid initial bank screen
+          autoplay: 1,        // Auto-play the video on load
+          controls: 0,        // Show pause/play buttons in player
+          showinfo: 0,        // Hide the video title
+          modestbranding: 1,  // Hide the Youtube Logo
+          loop: 1,            // Run the video in a loop
+          playlist: 'lfbX2PwENiE', // Required to run the video in a loop
+          fs: 0,              // Hide the full screen button
+          cc_load_policy: 0, // Hide closed captions
+          iv_load_policy: 3,  // Hide the Video Annotations
+          autohide: 0         // Hide video controls when playing
+        },
+        events: {
+          onReady: function(e) {
+            e.target.mute(); //silence audio from video
+          }
+        }
+      });
+     }
+    </script>
+
+
+
+      <p>Add a To Do:</p>
+      <input ng-model='td.newToDo'></input>
+      <br>
+      <button ng-click='td.addToDo()'>Add A New Item</button> 
+      <button ng-click='td.addToDoImp()'>Add A New Important Item</button> 
+      <br>
+      <h3>To-Do List</h3>
+      <button ng-hide='td.editFlag' ng-click='td.editMode()'>Edit </button>
+      <button ng-show='td.editFlag' ng-click='td.editMode()'>Done</button>
+      <!--  <input type='checkbox' ng-model='td.checkbox'> -->
+      <br>
+      <ul ng-hide='td.editFlag === true' ng-repeat='el in td.list track by $index'>
+        <li>{{el}} <button ng-click='td.delete($index)'>Delete Item</button></li>  
+      </ul>
+      <div ng-show='td.editFlag === true' ng-repeat='el in td.list track by $index'>
+        <form ng-submit='td.modify(el, $index)'>
+          <input type='textbox' ng-model='el'> <button>Change Item</button>
+        </form>
+      </div>
+    </div>
+    <div id='Calc'>
+      <h1>Calculator App</h1>
+      {{c1.error}}
+      <br>
+      <input type='textbox' ng-model='c1.first' ng-change='c1.check1()'> {{c1.operator}}
+      <input type='textbox' ng-model='c1.second' ng-change='c1.check2()'>
+       &nbsp;  <button ng-click='c1.eq()'>=</button> &nbsp; 
+      {{c1.result}}
+      <br>
+      Choose operator: 
+      <button ng-click='c1.bClick("+")'>+</button>
+      <button ng-click='c1.bClick("-")'>-</button>
+      <button ng-click='c1.bClick("*")'>x</button>
+      <button ng-click='c1.bClick("/")'>/</button>
+      {{c1.first}}
+    </div>
+    <div id="Dir">
+      <h1>Directives</h1>
+      <div ng-controller='dirCtrl as c2'>
+        <input type='checkbox' ng-model='c2.checked'></input>
+        <br>
+        <!-- ng-if literally removes the element from the DOM, show/hide keep on DOM -->
+        <p ng-if='c2.checked'>Content show/hide using ng-if</p>
+        <p ng-show='c2.checked'>Show if Checked</p>
+        <p ng-hide='c2.checked'>Show if Not Checked</p>
+        <ul ng-repeat='el in c2.list1'>
+          <li>{{el}}</li>
+        </ul>
+        <div ng-repeat='el in c2.list2'>
+          <p>Count #:{{$index}}, Name: {{el.name}}</p>
+          <p>{{el.age}}</p>
+          <h3>{{$even}}</h3>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div id='Clock'>    
+    <div ng-controller='clockController'>
+      <h1>Clock App by {{name}}</h1>
+      <hr>
+      <h3 style='color: #456789'>{{change}}</h3>
+      <br>
+      <p>The time is {{time}} <button ng-click='updateTime()'>Get new time</button></p>
+      <div ng-controller='Ctrl2 as c3'>
+        <p>{{c3.testA}} yo</p>
+      </div>
+      <input type='textbox' ng-change='textBoxChange()' ng-model='name' placeholder='please enter your name'></input>
+      <input type='checkbox' ng-model='boolean'></input>
+      <input type='date' ng-model='dateVal'></input>
+      <p>Radio gaga: 
+         <input type='radio' ng-model='radioVal' value='Guns'>Option 1</input>
+         <input type='radio' ng-model='radioVal' value='Marraige'>Option 2</input>
+         <input type='radio' ng-model='radioVal' value='Campaign Finance'>Option 3</input>
+      </p>
+    
+      <p ng-if='boolean === true'>Shhhhh... I'm your little secret</p>
+      <p>Date: {{dateVal}}</p>
+      <h4>Issue: {{radioVal}}</h4>
+    </div>
+
+
+    <h2>Importing Public Modules</h2>
+    <div ng-controller='TagsCtrl as t1'>
+      <tags-input ng-model="t1.tags"></tags-input>
+    </div>
+  </body>  
+    <script src='./todo.js'></script>
+    <script src='./clock.js'></script>
+    <script src='./calc.js'></script>
+    <script src='./otherMod.js'></script>
+</html>
