@@ -1,0 +1,57 @@
+.toDo{
+   /*background: url('http://i.cdn.turner.com/drp/nba/sixers/sites/default/files/140812-schedule-crowd-plain1500_15.jpg') no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Roboto';
+  color: #FAFAFA;
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  height: 700px;
+}
+.toDo h1{
+  z-index: 10;
+  text-align: center;
+  font-size: 300%; 
+}
+
+.toDo li{
+  text-align: left;
+  margin-left: 45%;
+  width: 20%; 
+}
+video {
+   width: 100%;
+    height: auto;
+    max-height: 100%;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  }
+
+  #Calc, #Dir, #Clock{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Roboto';
+  color: #FAFAFA;
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  height: 400px;
+  }
+
+#Calc{
+  background: url('http://i.cdn.turner.com/drp/nba/sixers/sites/default/files/140812-schedule-crowd-plain1500_15.jpg') no-repeat center center fixed;
+  margin-bottom: -3%;
+}
+
+#Dir{
+  background: url('http://cdn.wallpapersafari.com/17/8/ngae5z.jpg') no-repeat center center fixed;
+}
+#Clock{
+  background: url('http://trunkweed.com/uploads/posts/images/918393-free-alpaca-wallpaper_animals.jpg') no-repeat center center fixed;
+}
